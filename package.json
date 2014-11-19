@@ -1,0 +1,19 @@
+{
+  "name": "serialison",
+  "version": "0.1.0",
+  "description": "Resolve every link of a {json:api} document",
+  "main": "index.js",
+  "keywords": [
+    "json",
+    "api",
+    "link",
+    "linker",
+    "resolve",
+    "serialize"
+  ],
+  "author": "Johann Pardanaud <pardanaud.j@gmail.com> (http://jpardanaud.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "6to5": "^1.12.20"
+  }
+}
