@@ -119,11 +119,11 @@ The available options with their default values:
     throwErrorsForDuplicateIDs: true,
 
     /**
-     * Defines the maximum depth of resources the `resolve()` method will process. Raising this value may increase the
+     * Defines the maximum of nested resources the `resolve()` method will process. Raising this value may increase the
      * resolving time, as memory usage.
      * @type {Number}
      */
-    maxResourceDepth: 4,
+    maxNestingDepth: 4,
 
     /**
      * Lists the top level properties except the primary resource. Allows the constructor to find the name of your
