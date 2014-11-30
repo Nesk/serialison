@@ -3,4 +3,4 @@ require('6to5/register');
 require('6to5/polyfill');
 
 // Export the library
-module.exports = require('./lib/serialison.js').SerialiSON;
+module.exports = require('./lib/serialison').SerialiSON;

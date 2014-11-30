@@ -97,3 +97,40 @@ The `resolvedDocument` variable will contain the following structure:
     }
 }
 ```
+
+### Options
+
+You can pass options to the constructor:
+
+```js
+new SerialiSON(document, {
+    // Options
+});
+```
+
+The available options with their default values:
+
+```js
+{
+    /**
+     * Sets to `false` to disable errors when the document contains two resources with the same type and ID.
+     * @type {Boolean}
+     */
+    throwErrorsForDuplicateIDs: true,
+
+    /**
+     * Defines the maximum depth of resources the `resolve()` method will process. Raising this value may increase the
+     * resolving time, as memory usage.
+     * @type {Number}
+     */
+    maxResourceDepth: 4,
+
+    /**
+     * Lists the top level properties except the primary resource. Allows the constructor to find the name of your
+     * primary resource. Normally you shouldn't have to use this option but, if your document isn't {json:api} compliant
+     * and contains other top level properties, you can add them to this array.
+     * @type {Array}
+     */
+    topLevelProperties: ['meta', 'links', 'linked']
+}
+```
