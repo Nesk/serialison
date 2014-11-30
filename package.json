@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "Resolve every link of a {json:api} document",
   "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
   "keywords": [
     "json",
     "api",
@@ -15,5 +18,9 @@
   "license": "MIT",
   "dependencies": {
     "6to5": "^1.12.20"
+  },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "mocha": "^2.0.1"
   }
 }

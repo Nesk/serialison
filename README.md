@@ -134,3 +134,11 @@ The available options with their default values:
     topLevelProperties: ['meta', 'links', 'linked']
 }
 ```
+
+## Testing
+
+To run the tests, use the following command:
+
+```shell
+npm test
+```

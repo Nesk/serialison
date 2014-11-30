@@ -1,0 +1,19 @@
+{
+    "posts": {
+        "id": "1",
+        "links": {
+            "comments": ["1"]
+        }
+    },
+    "linked": {
+        "author": [{
+            "id": "9"
+        }],
+        "comments": [{
+            "id": "1",
+            "links": {
+                "author": "9"
+            }
+        }]
+    }
+}

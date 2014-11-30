@@ -1,0 +1,29 @@
+{
+    "posts": {
+        "id": "1",
+        "title": "Rails is Omakase",
+        "links": {
+            "author": {
+                "id": "9",
+                "type": "people"
+            },
+            "comments": ["1", "2", "3"]
+        }
+    },
+    "linked": {
+        "people": [{
+            "id": "9",
+            "name": "@d2h"
+        }],
+        "comments": [{
+            "id": "1",
+            "body": "Mmmmmakase"
+        }, {
+            "id": "2",
+            "body": "I prefer unagi"
+        }, {
+            "id": "3",
+            "body": "What's Omakase?"
+        }]
+    }
+}
