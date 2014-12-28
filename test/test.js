@@ -92,4 +92,17 @@ describe("SerialiSON", function() {
 
     });
 
+    describe("with additional documents of any types except objects", function() {
+
+        it("shouldn't throw any errors", function() {
+            var resolver = (new SerialiSON({}))
+                .addDocument(null)
+                .addDocument('string')
+                .addDocument(new String('string'));
+
+            assert.deepEqual(resolver.resolve(), {});
+        });
+
+    });
+
 });
