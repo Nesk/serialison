@@ -1,6 +1,6 @@
 var assert = require('chai').assert,
     data = require('./data'),
-    SerialiSON = require('../index');
+    SerialiSON = require('../' + require('../package.json').main);
 
 describe("SerialiSON", function() {
 

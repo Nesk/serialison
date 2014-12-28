@@ -13,9 +13,10 @@ npm install --save serialison
 Require the constructor, instanciate it with your document and call the `resolve()` method:
 
 ```js
+// The SerialiSON variable is already declared in a browser environment
 var SerialiSON = require('serialison');
 
-var document = {
+var myDocument = {
     "posts": {
         "id": "1",
         "title": "Rails is Omakase",
@@ -45,7 +46,7 @@ var document = {
     }
 };
 
-var resolver = new SerialiSON(document);
+var resolver = new SerialiSON(myDocument);
 
 var resolvedDocument = resolver.resolve();
 ```
@@ -103,7 +104,7 @@ The `resolvedDocument` variable will contain the following structure:
 You can pass options to the constructor:
 
 ```js
-new SerialiSON(document, {
+new SerialiSON(myDocument, {
     // Options
 });
 ```
@@ -113,22 +114,24 @@ The available options with their default values:
 ```js
 {
     /**
-     * Sets to `false` to disable errors when the document contains two resources with the same type and ID.
+     * Sets to `false` to disable errors when the document contains two resources
+     * with the same type and ID.
      * @type {Boolean}
      */
     throwErrorsForDuplicateIDs: true,
 
     /**
-     * Defines the maximum of nested resources the `resolve()` method will process. Raising this value may increase the
-     * resolving time, as memory usage.
+     * Defines the maximum of nested resources the `resolve()` method will process.
+     * Raising this value may increase the resolving time, as memory usage.
      * @type {Number}
      */
     maxNestingDepth: 4,
 
     /**
-     * Lists the top level properties except the primary resource. Allows the constructor to find the name of your
-     * primary resource. Normally you shouldn't have to use this option but, if your document isn't {json:api} compliant
-     * and contains other top level properties, you can add them to this array.
+     * Lists the top level properties except the primary resource. Allows the
+     * constructor to find the name of your primary resource. Normally you shouldn't
+     * have to use this option but, if your document isn't {json:api} compliant and
+     * contains other top level properties, you can add them to this array.
      * @type {Array}
      */
     topLevelProperties: ['meta', 'links', 'linked']
