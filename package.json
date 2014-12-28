@@ -17,7 +17,7 @@
   "author": "Johann Pardanaud <pardanaud.j@gmail.com> (http://jpardanaud.com/)",
   "license": "MIT",
   "dependencies": {
-    "6to5": "^1.12.20"
+    "6to5": "^2.0.4"
   },
   "devDependencies": {
     "chai": "^1.10.0",
