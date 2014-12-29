@@ -60,13 +60,6 @@ The `resolvedDocument` variable will contain the following structure:
     "posts": {
         "id": "1",
         "title": "Rails is Omakase",
-        "links": {
-            "author": {
-                "id": "9",
-                "type": "people"
-            },
-            "comments": ["1", "2", "3"]
-        },
         "author": {
             "id": "9",
             "name": "@d2h"
@@ -81,24 +74,9 @@ The `resolvedDocument` variable will contain the following structure:
             "id": "3",
             "body": "What's Omakase?"
         }]
-    },
-    "linked": {
-        "people": [{
-            "id": "9",
-            "name": "@d2h"
-        }],
-        "comments": [{
-            "id": "1",
-            "body": "Mmmmmakase"
-        }, {
-            "id": "2",
-            "body": "I prefer unagi"
-        }, {
-            "id": "3",
-            "body": "What's Omakase?"
-        }]
     }
 }
+
 ```
 
 ### Options
