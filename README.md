@@ -7,8 +7,10 @@ Resolve every link of a [{json:api}](http://jsonapi.org/) document
 Install SerialiSON and its dependencies:
 
 ```shell
-npm install --save serialison
+npm install serialison
 ```
+
+If you want to use SerialiSON in a browser, compile it with `npm run build` and link your HTML document to one the `*.js` files in the `client` directory.
 
 Require the constructor, instanciate it with your document and call the `resolve()` method:
 
@@ -109,7 +111,7 @@ new SerialiSON(myDocument, {
 });
 ```
 
-The available options with their default values:
+The available options with their default values (syntax based on [JSDoc](http://usejsdoc.org/index.html)):
 
 ```js
 {
@@ -132,9 +134,45 @@ The available options with their default values:
      * constructor to find the name of your primary resource. Normally you shouldn't
      * have to use this option but, if your document isn't {json:api} compliant and
      * contains other top level properties, you can add them to this array.
-     * @type {Array}
+     * @type {string[]}
      */
-    topLevelProperties: ['meta', 'links', 'linked']
+    topLevelProperties: ['meta', 'links', 'linked'],
+
+    /**
+     * Strips the `links` and `linked` top level properties once the document is
+     * resolved.
+     * @type {Boolean}
+     */
+    stripTopLinkingProperties: true,
+
+    /**
+     * Strips the `links` property from each resource.
+     * @type {Boolean}
+     */
+    stripLinksProperty: true,
+
+
+    /**
+     * A custom transformer to alter an object
+     * @callback transformer
+     * @param {Object} object - The object to transform
+     * @returns {Object} The transformed object
+     */
+
+    /**
+     * A collection of transformers to execute once the main document has been
+     * resolved. Each transformer will receive the main document as the first
+     * parameter.
+     * @type {transformer[]}
+     */
+    mainDocumentTransformers: [],
+
+    /**
+     * A collection of transformers to execute for each resource once it has been
+     * resolved. Each transformer will receive a resource as the first parameter.
+     * @type {transformer[]}
+     */
+    resourceTransformers: []
 }
 ```
 

@@ -10,14 +10,6 @@
         "title": "Rails is Omakase",
         "author": {
             "id": "9"
-        },
-        "links": {
-            "author": "9"
         }
-    },
-    "linked": {
-        "author": [{
-            "id": "9"
-        }]
     }
 }

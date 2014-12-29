@@ -6,20 +6,6 @@
             "links": {
                 "author": "9"
             }
-        }],
-        "links": {
-            "comments": ["1"]
-        }
-    },
-    "linked": {
-        "author": [{
-            "id": "9"
-        }],
-        "comments": [{
-            "id": "1",
-            "links": {
-                "author": "9"
-            }
         }]
     }
 }

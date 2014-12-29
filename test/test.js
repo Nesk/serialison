@@ -39,7 +39,7 @@ describe("SerialiSON", function() {
 
         describe("with `throwErrorsForDuplicateIDs` option set to `false`", function() {
 
-            it("shouldn't throw any error", function() {
+            it("shouldn't throw any errors", function() {
                 var input = data.input('document-with-duplicated-resources');
 
                 var errorOccurred = false;
@@ -59,7 +59,7 @@ describe("SerialiSON", function() {
 
     });
 
-    describe("with `maxNestingDepth` option set to `1` and document a with a nesting depth of `2`", function() {
+    describe("with `maxNestingDepth` option set to `1` and a document with a nesting depth of `2`", function() {
 
         it("should return a document with a nesting depth of `1`", function() {
             var input = data.input('document-with-depth-of-2'),
@@ -101,6 +101,45 @@ describe("SerialiSON", function() {
                 .addDocument(new String('string'));
 
             assert.deepEqual(resolver.resolve(), {});
+        });
+
+    });
+
+    describe("with striping options set to `false`", function() {
+
+        it("should return a document without any stripped properties compared to the original one", function() {
+            var input = data.input('document-without-striping'),
+                output = data.output('document-without-striping');
+
+            var resolver = new SerialiSON(input, {
+                stripTopLinkingProperties: false,
+                stripLinksProperty: false
+            });
+
+            assert.deepEqual(resolver.resolve(), output);
+        });
+
+    });
+
+    describe("with custom transformers", function() {
+
+        it("should apply any modifications done by the default and custom transformers", function() {
+            var input = data.input('document-with-transformers'),
+                output = data.output('document-with-transformers');
+
+            var resolver = new SerialiSON(input, {
+                mainDocumentTransformers: [function(mainDocument) {
+                    mainDocument.title = "Posts about rails";
+                    return mainDocument;
+                }],
+
+                resourceTransformers: [function(resource) {
+                    delete resource.id;
+                    return resource;
+                }]
+            });
+
+            assert.deepEqual(resolver.resolve(), output);
         });
 
     });
