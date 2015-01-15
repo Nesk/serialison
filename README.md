@@ -94,11 +94,18 @@ The available options with their default values (syntax based on [JSDoc](http://
 ```js
 {
     /**
-     * Sets to `false` to disable errors when the document contains two resources
-     * with the same type and ID.
+     * Set to `false` to disable errors when the documents contain two resources
+     * with the same type and ID, the latest resource will override the other ones.
      * @type {Boolean}
      */
     throwErrorsForDuplicateIDs: true,
+
+    /**
+     * Set to `false` to disable errors when the documents contain two URL templates
+     * with the same path, the latest URL template will override the other ones.
+     * @type {Boolean}
+     */
+    throwErrorsForDuplicateUrlTemplates: true,
 
     /**
      * Defines the maximum of nested resources the `resolve()` method will process.

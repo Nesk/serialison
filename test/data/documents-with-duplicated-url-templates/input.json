@@ -1,0 +1,15 @@
+[{
+    "links": {
+        "posts.author": {
+            "href": "http://example.com/people/{posts.author}",
+            "type": "people"
+        }
+    }
+}, {
+    "links": {
+        "posts.author": {
+            "href": "http://example.com/comments/{posts.comments}",
+            "type": "comments"
+        }
+    }
+}]

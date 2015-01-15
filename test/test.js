@@ -59,6 +59,50 @@ describe("SerialiSON", function() {
 
     });
 
+    describe("with documents containing duplicated URL templates", function() {
+
+        describe("with default options", function() {
+
+            it("should throw an error", function() {
+                var input = data.input('documents-with-duplicated-url-templates');
+
+                var errorOccurred = false;
+
+                try {
+                    var resolver = new SerialiSON(input[0]);
+                    resolver.addDocument(input[1]);
+                } catch(error) {
+                    errorOccurred = true;
+                }
+
+                assert.isTrue(errorOccurred);
+            });
+
+        });
+
+        describe("with `throwErrorsForDuplicateIDs` option set to `false`", function() {
+
+            it("shouldn't throw any errors", function() {
+                var input = data.input('documents-with-duplicated-url-templates');
+
+                var errorOccurred = false;
+
+                try {
+                    var resolver = new SerialiSON(input[0], {
+                        throwErrorsForDuplicateUrlTemplates: false
+                    });
+                    resolver.addDocument(input[1]);
+                } catch(error) {
+                    errorOccurred = true;
+                }
+
+                assert.isFalse(errorOccurred);
+            })
+
+        });
+
+    });
+
     describe("with `maxNestingDepth` option set to `1` and a document with a nesting depth of `2`", function() {
 
         it("should return a document with a nesting depth of `1`", function() {
