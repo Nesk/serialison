@@ -2,7 +2,8 @@
  * Requirements
  */
 
-var browserify = require('browserify'),
+var argv = require('yargs').argv,
+    browserify = require('browserify'),
     buffer = require('vinyl-buffer'),
     exorcist = require('exorcist'),
     gulp = require('gulp')
@@ -13,7 +14,9 @@ var browserify = require('browserify'),
  * Gulp plugins
  */
 
-var rename = require('gulp-rename'),
+var bump = require('gulp-bump'),
+    git = require('gulp-git'),
+    rename = require('gulp-rename'),
     uglify = require('gulp-uglify');
 
 /*
@@ -22,7 +25,8 @@ var rename = require('gulp-rename'),
 
 var paths = {
     src: './entry-points/browser.js',
-    dest: 'client/'
+    dest: 'client/',
+    versioning: 'package.json'
 };
 
 var names = {
@@ -51,3 +55,31 @@ gulp.task('default', function() {
         .pipe(rename(names.min))
         .pipe(gulp.dest(paths.dest));
 });
+
+/*
+ * Release tasks
+ */
+
+gulp.task('bump', function() {
+    return gulp.src(paths.versioning)
+        .pipe(bump({version: argv.v}))
+        .pipe(gulp.dest('./'));
+});
+
+gulp.task('commit', ['bump'], function() {
+    return gulp.src(paths.versioning)
+        .pipe(git.commit('Bump to v' + argv.v));
+});
+
+gulp.task('tag', ['bump', 'commit'], function(cb) {
+    var version = 'v' + argv.v;
+    return git.tag(version, 'Release ' + version, cb);
+});
+
+gulp.task('push', ['bump', 'commit', 'tag'], function(cb) {
+    return git.push('origin', 'master', {
+        args: '--tags'
+    }, cb);
+});
+
+gulp.task('release', ['bump', 'commit', 'tag', 'push']);
