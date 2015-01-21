@@ -24,15 +24,9 @@ describe("SerialiSON", function() {
             it("should throw an error", function() {
                 var input = data.input('document-with-duplicated-resources');
 
-                var errorOccurred = false;
-
-                try {
+                assert.throw(function() {
                     new SerialiSON(input);
-                } catch(error) {
-                    errorOccurred = true;
-                }
-
-                assert.isTrue(errorOccurred);
+                }, "A resource with the same type and ID already exists");
             });
 
         });
@@ -42,17 +36,11 @@ describe("SerialiSON", function() {
             it("shouldn't throw any errors", function() {
                 var input = data.input('document-with-duplicated-resources');
 
-                var errorOccurred = false;
-
-                try {
+                assert.doesNotThrow(function() {
                     new SerialiSON(input, {
                         throwErrorsForDuplicateIDs: false
                     });
-                } catch(error) {
-                    errorOccurred = true;
-                }
-
-                assert.isFalse(errorOccurred);
+                });
             })
 
         });
@@ -66,16 +54,10 @@ describe("SerialiSON", function() {
             it("should throw an error", function() {
                 var input = data.input('documents-with-duplicated-url-templates');
 
-                var errorOccurred = false;
-
-                try {
+                assert.throw(function() {
                     var resolver = new SerialiSON(input[0]);
                     resolver.addDocument(input[1]);
-                } catch(error) {
-                    errorOccurred = true;
-                }
-
-                assert.isTrue(errorOccurred);
+                }, /^Multiple URL templates with the same path found: .+/);
             });
 
         });
@@ -85,18 +67,12 @@ describe("SerialiSON", function() {
             it("shouldn't throw any errors", function() {
                 var input = data.input('documents-with-duplicated-url-templates');
 
-                var errorOccurred = false;
-
-                try {
+                assert.doesNotThrow(function() {
                     var resolver = new SerialiSON(input[0], {
                         throwErrorsForDuplicateUrlTemplates: false
                     });
                     resolver.addDocument(input[1]);
-                } catch(error) {
-                    errorOccurred = true;
-                }
-
-                assert.isFalse(errorOccurred);
+                });
             })
 
         });
