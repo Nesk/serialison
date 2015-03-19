@@ -3,12 +3,12 @@
  */
 
 var argv = require('yargs').argv,
+    babelify = require('babelify'),
     browserify = require('browserify'),
     buffer = require('vinyl-buffer'),
     exorcist = require('exorcist'),
     gulp = require('gulp')
-    source = require('vinyl-source-stream')
-    to5Browserify = require('6to5-browserify');
+    source = require('vinyl-source-stream');
 
 /*
  * Gulp plugins
@@ -17,6 +17,7 @@ var argv = require('yargs').argv,
 var bump = require('gulp-bump'),
     git = require('gulp-git'),
     rename = require('gulp-rename'),
+    sourcemaps = require('gulp-sourcemaps'),
     uglify = require('gulp-uglify');
 
 /*
@@ -45,7 +46,7 @@ gulp.task('default', function() {
         standalone: 'SerialiSON',
         debug: true
     })
-        .transform(to5Browserify)
+        .transform(babelify)
         .bundle()
         .pipe(exorcist(paths.dest + names.base + '.map'))
         .pipe(source(names.base))

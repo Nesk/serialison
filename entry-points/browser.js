@@ -1,5 +1,5 @@
 // We need the polyfill
-require('6to5/polyfill');
+require('babel/polyfill');
 
 // Export the library
 module.exports = require('../lib/serialison');
