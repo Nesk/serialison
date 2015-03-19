@@ -52,8 +52,10 @@ gulp.task('default', function() {
         .pipe(source(names.base))
         .pipe(gulp.dest(paths.dest))
         .pipe(buffer())
+        .pipe(sourcemaps.init({loadMaps: true}))
         .pipe(uglify())
         .pipe(rename(names.min))
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(paths.dest));
 });
 
