@@ -4,12 +4,12 @@
   "description": "Resolve every link of a {json:api} document",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Nesk/serialison.git"
+    "url": "https://github.com/nesk/serialison.git"
   },
   "main": "entry-points/node.js",
   "scripts": {
     "build": "gulp",
-    "test": "echo '#node' ; mocha ; echo '#phantomjs' ;mocha-phantomjs test/test.html"
+    "test": "gulp; echo '\\n#node'; mocha; echo '#phantomjs'; mocha-phantomjs test/test.html"
   },
   "keywords": [
     "json",
