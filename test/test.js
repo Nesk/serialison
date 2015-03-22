@@ -1,6 +1,8 @@
-var assert = require('chai').assert,
-    data = require('./data'),
-    SerialiSON = require('../' + require('../package.json').main);
+if (typeof require != 'undefined') {
+    var assert = require('chai').assert,
+        data = require('./data/loader-node'),
+        SerialiSON = require('../' + require('../package.json').main);
+}
 
 describe("SerialiSON", function() {
 

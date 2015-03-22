@@ -1,4 +1,6 @@
-[{
+exports['documents-with-duplicated-url-templates'] = exports['documents-with-duplicated-url-templates'] || {};
+
+exports['documents-with-duplicated-url-templates'].input = [{
     "links": {
         "posts.author": {
             "href": "http://example.com/people/{posts.author}",
@@ -12,4 +14,4 @@
             "type": "comments"
         }
     }
-}]
+}];

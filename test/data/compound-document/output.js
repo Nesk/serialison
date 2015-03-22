@@ -1,4 +1,6 @@
-{
+exports['compound-document'] = exports['compound-document'] || {};
+
+exports['compound-document'].output = {
     "posts": [{
         "id": "1",
         "title": "Rails is Omakase",
@@ -42,4 +44,4 @@
             "body": "Dependency Injection is Not a Vice"
         }]
     }]
-}
+};

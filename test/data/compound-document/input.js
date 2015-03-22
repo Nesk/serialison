@@ -1,4 +1,6 @@
-{
+exports['compound-document'] = exports['compound-document'] || {};
+
+exports['compound-document'].input = {
     "links": {
         "posts.author": {
             "href": "http://example.com/people/{posts.author}",
@@ -56,4 +58,4 @@
             "body": "Dependency Injection is Not a Vice"
         }]
     }
-}
+};

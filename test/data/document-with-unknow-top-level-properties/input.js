@@ -1,4 +1,6 @@
-{
+exports['document-with-unknow-top-level-properties'] = exports['document-with-unknow-top-level-properties'] || {};
+
+exports['document-with-unknow-top-level-properties'].input = {
     "ignore-this": {
         "id": "1",
         "links": {
@@ -17,4 +19,4 @@
             "id": "9"
         }]
     }
-}
+};

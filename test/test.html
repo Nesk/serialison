@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../node_modules/mocha/mocha.css">
+    </head>
+    <body>
+        <div id="mocha"></div>
+
+        <!-- Import Mocha and Chai dependencies -->
+        <script src="../node_modules/mocha/mocha.js"></script>
+        <script src="../node_modules/chai/chai.js"></script>
+
+        <!-- Configure Mocha and manage global variables -->
+        <script>
+            mocha.ui('bdd');
+            mocha.reporter('html');
+
+            var assert = chai.assert;
+        </script>
+
+        <!-- Import all the data used for testing -->
+        <script src="data/loader-browser.js"></script>
+        <script src="data/compound-document/input.js"></script>
+        <script src="data/compound-document/output.js"></script>
+        <script src="data/document-with-depth-of-2/input.js"></script>
+        <script src="data/document-with-depth-of-2/output.js"></script>
+        <script src="data/document-with-duplicated-resources/input.js"></script>
+        <script src="data/document-with-transformers/input.js"></script>
+        <script src="data/document-with-transformers/output.js"></script>
+        <script src="data/document-with-unknow-top-level-properties/input.js"></script>
+        <script src="data/document-with-unknow-top-level-properties/output.js"></script>
+        <script src="data/document-without-striping/input.js"></script>
+        <script src="data/document-without-striping/output.js"></script>
+        <script src="data/documents-with-duplicated-url-templates/input.js"></script>
+
+        <!-- Import SerialiSON and the tests -->
+        <script src="../client/serialison.js"></script>
+        <script src="test.js"></script>
+
+        <script>
+            if (window.mochaPhantomJS) { mochaPhantomJS.run(); }
+            else { mocha.run(); }
+        </script>
+    </body>
+</html>

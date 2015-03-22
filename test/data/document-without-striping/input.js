@@ -1,4 +1,6 @@
-{
+exports['document-without-striping'] = exports['document-without-striping'] || {};
+
+exports['document-without-striping'].input = {
     "posts": {
         "id": "1",
         "title": "Rails is Omakase",
@@ -15,4 +17,4 @@
             "name": "@d2h"
         }]
     }
-}
+};

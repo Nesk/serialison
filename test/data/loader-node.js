@@ -1,11 +1,7 @@
-var fs = require('fs');
-
 function getData(dataType, direction) {
-    var data = fs.readFileSync('test/data/' + dataType + '/' + direction + '.json', {
+    return require(__dirname + '/' + dataType + '/' + direction, {
         encoding: 'utf-8'
-    });
-
-    return JSON.parse(data);
+    })[dataType][direction];
 };
 
 exports.input = function(dataType) {

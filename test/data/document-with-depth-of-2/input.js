@@ -1,4 +1,6 @@
-{
+exports['document-with-depth-of-2'] = exports['document-with-depth-of-2'] || {};
+
+exports['document-with-depth-of-2'].input = {
     "posts": {
         "id": "1",
         "links": {
@@ -16,4 +18,4 @@
             }
         }]
     }
-}
+};
