@@ -2,15 +2,21 @@
 
 Resolve every link of a [{json:api}](http://jsonapi.org/) document
 
-## Usage
+## Installation
 
-Install SerialiSON and its dependencies:
+Node.js:
 
 ```shell
-npm install serialison
+npm install --save serialison
 ```
 
-If you want to use SerialiSON in a browser, compile it with `npm run build` and link your HTML document to one the `*.js` files in the `client` directory.
+Browsers:
+
+```shell
+bower install --save serialison
+```
+
+## Usage
 
 Require the constructor, instanciate it with your document and call the `resolve()` method:
 
