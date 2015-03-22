@@ -1,6 +1,6 @@
 {
   "name": "serialison",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Resolve every link of a {json:api} document",
   "repository": {
     "type": "git",
