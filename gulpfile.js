@@ -7,7 +7,8 @@ var argv = require('yargs').argv,
     browserify = require('browserify'),
     buffer = require('vinyl-buffer'),
     exorcist = require('exorcist'),
-    gulp = require('gulp')
+    gulp = require('gulp'),
+    npm = require('npm'),
     source = require('vinyl-source-stream');
 
 /*
@@ -27,7 +28,9 @@ var bump = require('gulp-bump'),
 var paths = {
     src: './entry-points/browser.js',
     dest: 'client/',
-    versioning: 'package.json'
+
+    versioning: ['bower.json', 'package.json'],
+    release: ['client/*', 'bower.json', 'package.json']
 };
 
 var names = {
@@ -60,8 +63,10 @@ gulp.task('default', function() {
 });
 
 /*
- * Release tasks
+ * Releasing tasks
  */
+
+gulp.task('release', ['default', 'bump', 'commit', 'tag']);
 
 gulp.task('bump', function() {
     return gulp.src(paths.versioning)
@@ -69,20 +74,31 @@ gulp.task('bump', function() {
         .pipe(gulp.dest('./'));
 });
 
-gulp.task('commit', ['bump'], function() {
-    return gulp.src(paths.versioning)
+gulp.task('commit', ['default', 'bump'], function() {
+    return gulp.src(paths.release)
+        .pipe(git.add())
         .pipe(git.commit('Bump to v' + argv.v));
 });
 
-gulp.task('tag', ['bump', 'commit'], function(cb) {
+gulp.task('tag', ['default', 'bump', 'commit'], function(cb) {
     var version = 'v' + argv.v;
-    return git.tag(version, 'Release ' + version, cb);
+    git.tag(version, 'Release ' + version, cb);
 });
 
-gulp.task('push', ['bump', 'commit', 'tag'], function(cb) {
-    return git.push('origin', 'master', {
+/*
+ * Publishing taks
+ */
+
+gulp.task('publish', ['publish-git', 'publish-npm']);
+
+gulp.task('publish-git', function(cb) {
+    git.push('origin', 'master', {
         args: '--tags'
     }, cb);
 });
 
-gulp.task('release', ['bump', 'commit', 'tag', 'push']);
+gulp.task('publish-npm', function(cb) {
+    npm.load(function() {
+        npm.commands.publish(cb);
+    });
+});

@@ -1,0 +1,31 @@
+{
+  "name": "serialison",
+  "version": "1.1.0",
+  "homepage": "https://github.com/nesk/serialison",
+  "authors": [
+    "Johann Pardanaud <pardanaud.j@gmail.com>"
+  ],
+  "description": "Resolve every link of a {json:api} document",
+  "main": "client/serialison.min.js",
+  "moduleType": [
+    "es6",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "json",
+    "api",
+    "link",
+    "linker",
+    "resolve",
+    "serialize"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "gulpfile.js",
+    "node_modules",
+    "package.json",
+    "test"
+  ]
+}
